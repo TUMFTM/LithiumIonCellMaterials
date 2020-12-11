@@ -40,8 +40,9 @@ Further uncertainties come from the factor_more_capacity_cathode factor. As ment
 This method directly uses the densities of the active materials and the geometric properties i.e. the volume of the electrodes to calculate the mass of the active electrode parts. The model brings us to the aim of knowing the mass percentages of the active materials much quicker, as there is no need for adapting parameters. In fact, this model is in a way integrated also in the capacity-based method to allow for backtracking and correcting the factor_more_capacity_cathode.
 
 ### Article and Description of Datasets
-[Smart Mobility Blog - How many resources are in a lithium-ion cell](https://smarte-mobilitaet-blog.ftm.mw.tum.de/index.php/2020/04/02/how-many-resources-are-inside-of-a-lithium-ion-cell/
-)
+[Smart Mobility Blog - How many resources are in a lithium-ion cell](https://smarte-mobilitaet-blog.ftm.mw.tum.de/index.php/2020/04/02/how-many-resources-are-inside-of-a-lithium-ion-cell/)
+
+[Same Article on Researchgate](https://www.researchgate.net/publication/340870640_Resources_in_a_lithium-ion_cell)
 #### Contact
 lukas.merkle@tum.de\
 [FTM Website](https://www.mw.tum.de/ftm/lehrstuhl/mitarbeiter/smarte-mobilitaet/lukas-merkle-m-sc/)
