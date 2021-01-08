@@ -42,12 +42,15 @@ This method directly uses the densities of the active materials and the geometri
 ## Article and Description of Datasets
 [Smart Mobility Blog - How many resources are in a lithium-ion cell](https://smarte-mobilitaet-blog.ftm.mw.tum.de/index.php/2020/04/02/how-many-resources-are-inside-of-a-lithium-ion-cell/)
 
+[Same Article on Researchgate](https://www.researchgate.net/publication/340870640_Resources_in_a_lithium-ion_cell)
+
+
 #### Sources
 [1] doi.org/10.3390/batteries5040064
 
 [2] https://www.neicorporation.com/products/batteries/cathode-anode-tapes/lithium-nickel-cobalt-aluminum-oxide/
 
-[Same Article on Researchgate](https://www.researchgate.net/publication/340870640_Resources_in_a_lithium-ion_cell)
+
 #### Contact
 lukas.merkle@tum.de\
 [FTM Website](https://www.mw.tum.de/ftm/lehrstuhl/mitarbeiter/smarte-mobilitaet/lukas-merkle-m-sc/)
