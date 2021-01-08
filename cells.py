@@ -4,8 +4,8 @@ Each cell has static information in a dictionary
 '''
 
 
-############## Rundzellen ############################################
-# Alle aus Lain2019
+############## Cylindric Cells ############################################
+# Lain2019
 housing_thickness = 0.2
 samsung_25R = {
     "name":"Samsung_25R",
@@ -56,7 +56,7 @@ samsung_48G = {
     "an-chem":"graphite-si",
     "capacity": 4.838, # Ah
     "anode_overhang": 1.1,
-    "factor_more_capacity_cathode": 1.1,  # unklar
+    "factor_more_capacity_cathode": 1.1,  
     # "specific_capacity_paper": 0.199,  # Ah/g
     "ease_packaging_factor": 1,
     "D0": 4 * 10**-3,
@@ -97,7 +97,7 @@ samsung_30Q = {
     "an-chem":"graphite-si",
     "capacity": 3, # Ah
     "anode_overhang": 1.1,
-    "factor_more_capacity_cathode": 1.1,  # unklar
+    "factor_more_capacity_cathode": 1.1,  
     # "specific_capacity_paper": 0.199,  # Ah/g
     "ease_packaging_factor": 1.1,
     "D0":  4 * 10**-3,
@@ -138,7 +138,7 @@ sony_VTC5A = {
     "an-chem":"graphite-si",
     "capacity": 2.5, # Ah
     "anode_overhang": 1.1,
-    "factor_more_capacity_cathode": 1.1,  # unklar
+    "factor_more_capacity_cathode": 1.1, 
     # "specific_capacity_paper": 0.199,  # Ah/g
     "ease_packaging_factor": 1.1,
     "D0":  4 * 10**-3,
@@ -179,7 +179,7 @@ sony_VTC6 = {
     "an-chem":"graphite-si",
     "capacity": 3, # Ah
     "anode_overhang": 1.1,
-    "factor_more_capacity_cathode": 1.1,  # unklar
+    "factor_more_capacity_cathode": 1.1, 
     # "specific_capacity_paper": 0.199,  # Ah/g
     "ease_packaging_factor": 1.1,
     "D0":  4 * 10**-3,
@@ -216,7 +216,7 @@ A123={
     "capacity": 1.1,  # Ah
     "anode_overhang": 1.1,
     "specific_capacity_paper": 0.116, # aus paper: 0.116,
-    "factor_more_capacity_cathode": 1.7,  # unklar
+    "factor_more_capacity_cathode": 1.7, 
     "ease_packaging_factor": 1.02,
     "D0": 4 * 10 ** -3,
     "D1": 18 * 10 ** -3,
@@ -256,7 +256,7 @@ LG_HB4={
     "an-chem": "graphite",
     "capacity": 1.5,  # Ah
     "anode_overhang": 1.1,
-    "factor_more_capacity_cathode": 1.4,  # unklar
+    "factor_more_capacity_cathode": 1.4, 
     # "specific_capacity_paper": 0.160, #Ah/g
     "ease_packaging_factor": 1.15, #1.15,
     "D0": 4 * 10 ** -3,
@@ -297,7 +297,7 @@ LG_HB2={
     "an-chem": "graphite",
     "capacity": 1.5,  # Ah
     "anode_overhang": 1.1,
-    "factor_more_capacity_cathode": 1.4,  # unklar
+    "factor_more_capacity_cathode": 1.4, 
     # "specific_capacity_paper": 0.160, #Ah/g
     "ease_packaging_factor": 1.15, #1.15,
     "D0": 4 * 10 ** -3,
@@ -338,7 +338,7 @@ LG_HG2={
     "an-chem": "graphite-si",
     "capacity": 3,  # Ah
     "anode_overhang": 1.1,
-    "factor_more_capacity_cathode": 1.05,  # unklar
+    "factor_more_capacity_cathode": 1.05, 
     # "specific_capacity_paper": 0.160, #Ah/g
     "ease_packaging_factor": 1.04, #1.15,
     "D0": 4 * 10 ** -3,
@@ -392,9 +392,9 @@ PHEV2 = { # From Liebig2019
     "anode_overhang": 1.011,
     "specific_capacity_paper": 0.160,
     "factor_more_capacity_cathode":1.7, # Geschätzt aus Liebig2019
-    "h": 0.0265, # abmaße PHEV2 aus Hettesheimer2017 TIEFE
-    "l": 0.091, #m BREITE
-    "b": 0.148 , #m LÄNGE (2D hoehe)
+    "h": 0.0265, # measure PHEV2 from Hettesheimer2017 depth
+    "l": 0.091, #m width
+    "b": 0.148 , #m length (2D height)
     "housing_thickness": housing_thickness* 10**-3,
     "porosity_Separator": 0.4,
     "density_PP_PE": 0.95,  # g/cm³
@@ -429,12 +429,12 @@ BEV2 = {
     "an-chem":"graphite",
     "capacity": 108.9, # Ah
     "anode_overhang": 1.15,
-    "factor_more_capacity_cathode":1.16, # Geschätzt aus Liebig2019
+    "factor_more_capacity_cathode":1.16, # estimated from Liebig2019
     "case_to_stack_layer_factor": 0.8,
     # "case_to_stack_layer_factor": 1,
-    "h": 0.045, # abmaße BEV2 aus Hettesheimer2017 TIEFE
-    "l": 0.115, #m BREITE
-    "b": 0.173 , #m LÄNGE (2D hoehe)
+    "h": 0.045, # measure BEV2 from Hettesheimer2017 depth
+    "l": 0.115, #m width
+    "b": 0.173 , #m length (2D height)
     "housing_thickness": housing_thickness* 10**-3,
     "porosity_Separator": 0.4,
     "density_PP_PE": 0.95,  # g/cm³
@@ -468,30 +468,17 @@ Schmalstieg_pris = { # Parameter from Schmalstieg2017
     "cat-chem":"NMC111",
     "an-chem":"graphite",
     "capacity": 30, # Ah
-    "anode_overhang": 1.091, # Aus Schmalstieg berechnet
-    "factor_more_capacity_cathode":1.17, # Geschätzt
-    # "h": 0.025, # # Übernommen aus cell_geometry_schmalstieg
-    # "l": 0.125, #m
-    # "b": 0.173 , #m
-    # "l_jellyroll": 0.124,
-    # "h": 0.0265,  # abmaße PHEV2 aus Hettesheimer2017 TIEFE
-    # "l": 0.091,  # m BREITE
-    # "b": 0.148,  # m LÄNGE (2D hoehe)
-    # "b_jellyroll": 0.124,
-    "h": 0.021,  # abmaße PHEV1 aus cellformats_daimler
-    "l": 0.085,  # m BREITE
-    "b": 0.173,  # m LÄNGE (2D hoehe)
+    "anode_overhang": 1.091, # Aus Schmalstieg calc.
+    "factor_more_capacity_cathode":1.17, # est.
+    "h": 0.021,  # measure PHEV1 from cellformats_daimler
+    "l": 0.085,  # m width
+    "b": 0.173,  # m length (2D height)
     "b_jellyroll": 0.124,
     "ease_packaging_factor": 1.05,
     "D0": 0 * 10 ** -3,
     "housing_thickness": housing_thickness* 10**-3,
     "porosity_Separator": 0.395,
     "density_PP_PE": 0.95,  # g/cm³
-    # "tape_am_binder_carbon_ratio":{
-    #     "activematerial": 0.88,
-    #     "binder": 0.06,
-    #     "carbon": 0.06
-    # },
     "cat_activematerial": 0.88,
     "cat_binder": 0.06,
     "cat_conductivecarbon": 0.06,
@@ -515,7 +502,7 @@ Schmalstieg_pris = { # Parameter from Schmalstieg2017
 }
 
 housing_thickness = 0.5
-eGolf_UF261591={ # Format vermutlich PHEV2
+eGolf_UF261591={ # Format vmtl. PHEV2
     "name":"eGolf_UF261591",
     "type": "prismatic",
     "design": "capacity",
@@ -523,18 +510,18 @@ eGolf_UF261591={ # Format vermutlich PHEV2
     "cat-chem":"NMC111",
     "an-chem":"graphite",
     "capacity": 25, # Ah
-    "anode_overhang": 1.08, # aus Warnecke2017
+    "anode_overhang": 1.08, # from Warnecke2017
     "factor_more_capacity_cathode":1.55,
     "case_to_stack_layer_factor": 0.83,
-    "h": 0.0265,  # Höhe oder Tiefe
-    "l": 0.091,  # m BREITE
-    "b": 0.148,  # m LÄNGE (2D hoehe)
+    "h": 0.0265,  # height oder depth
+    "l": 0.091,  # m width
+    "b": 0.148,  # m length (2D height)
     "b_jellyroll": 0.124,
     "ease_packaging_factor": 1.1,
     "D0": 0 * 10 ** -3,
     "casing_material": "Al",
     "housing_thickness": housing_thickness* 10**-3,
-    "porosity_Separator": 0.4, # Standardwert
+    "porosity_Separator": 0.4, # Standard
     "density_PP_PE": 0.95,  # g/cm³
     # "tape_am_binder_carbon_ratio":{
     #     "activematerial": 0.8,
@@ -547,9 +534,9 @@ eGolf_UF261591={ # Format vermutlich PHEV2
     "an_activematerial": 0.9,
     "an_binder": 0.05,
     "an_conductivecarbon": 0.05,
-    "cat_porosity": 0.3, # Standardwert
-    "an_porosity": 0.3, # Standardwert
-    "cu" : 10 * 10**-6, # Werte aus Hettesheimer2017 für 2017
+    "cat_porosity": 0.3, # Standard value
+    "an_porosity": 0.3, # Standard value
+    "cu" : 10 * 10**-6, # values from Hettesheimer2017 für 2017
     "an" : 86 * 10**-6,
     "sep": 20 * 10**-6,
     "cat": 78 * 10**-6,
@@ -571,9 +558,9 @@ pouch_fantasy1={ # pouch cell from Kovachev2019
     "capacity": 41, # Ah Kovachev2019
     "anode_overhang": 1.1,
     "factor_more_capacity_cathode":2, # Geschätzt aus Liebig2019
-    "h": 7.7 * 10**-3, # TIEFE abmaße Mail Kovachev2019
-    "l": 260 * 10**-3, #m LÄNGE
-    "b": 215 * 10**-3 , #m BREITE (2D hoehe)
+    "h": 7.7 * 10**-3, # depth abmaße Mail Kovachev2019
+    "l": 260 * 10**-3, #m length
+    "b": 215 * 10**-3 , #m width (2D height)
     "case_to_stack_layer_factor": 0.86, # mail Kovachev2019
     "housing_thickness": housing_thickness,
     "porosity_Separator": 0.4,
@@ -591,7 +578,7 @@ pouch_fantasy1={ # pouch cell from Kovachev2019
     "an_conductivecarbon": 0.05,
     "cat_porosity": 0.2,
     "an_porosity": 0.3,
-    "cu" : 10 * 10**-6, # Schichtdicken aus Kovachev2019
+    "cu" : 10 * 10**-6, # layer thickness from  Kovachev2019
     "an" : 65 * 10**-6,
     "sep" :20 * 10**-6,
     "cat": 75 * 10**-6,
@@ -610,9 +597,9 @@ pouch_fantasy2={ # pouch cell from https://www.alibaba.com/product-detail/Li-PO-
     "capacity": 64, # Ah
     "anode_overhang": 1.1,
     "factor_more_capacity_cathode":1.5, # unklar
-    "h": 11.5 * 10**-3, # TIEFE abmaße https://www.alibaba.com/product-detail/Original-NMC-L-G-Chem-e63_62151847686.html?spm=a2700.galleryofferlist.0.0.45543a0aCUsljt
-    "l": 325 * 10**-3, #m LÄNGE
-    "b": 134 * 10**-3 , #m BREITE (2D hoehe)
+    "h": 11.5 * 10**-3, # depth abmaße https://www.alibaba.com/product-detail/Original-NMC-L-G-Chem-e63_62151847686.html?spm=a2700.galleryofferlist.0.0.45543a0aCUsljt
+    "l": 325 * 10**-3, #m length
+    "b": 134 * 10**-3 , #m width (2D height)
     "case_to_stack_layer_factor": 0.86, # mail Kovachev2019
     "housing_thickness": housing_thickness,
     "porosity_Separator": 0.4,
@@ -630,7 +617,7 @@ pouch_fantasy2={ # pouch cell from https://www.alibaba.com/product-detail/Li-PO-
     "an_conductivecarbon": 0.05,
     "cat_porosity": 0.2,
     "an_porosity": 0.3,
-    "cu" : 10 * 10**-6, # Schichtdicken aus Kovachev2019
+    "cu" : 10 * 10**-6, # Layer thickness Kovachev2019
     "an" : 65 * 10**-6,
     "sep" :20 * 10**-6,
     "cat": 75 * 10**-6,
@@ -646,12 +633,12 @@ Kokam_7_5AH={ # aus Ecker2015
     "cat-chem": "NC46",
     "an-chem": "graphite",
     "capacity": 7.5,  # Ah
-    "anode_overhang": ((103)*(87))/ ((101)*(85)), # = 1.044 berechnet aus Ecker2015
+    "anode_overhang": ((103)*(87))/ ((101)*(85)), # = 1.044 calc from Ecker2015
     "factor_more_capacity_cathode": 1.16,  # nd
     "h": 7.9 * 10 ** -3, #
     "l": 102 * 10 ** -3,  #
     "b": 107 * 10 ** -3,  #
-    "case_to_stack_layer_factor": ((103)*(87)) / (107*102), # =0.821,  # berechnet aus Ecker2015
+    "case_to_stack_layer_factor": ((103)*(87)) / (107*102), # =0.821,  # cal from  Ecker2015
     "housing_thickness": housing_thickness,
     "porosity_Separator": 0.58,
     "density_PP_PE": 0.95,  # g/cm³
@@ -684,16 +671,16 @@ EIG_ePLB_C020={ # Warnecke2017
     "cat-chem": "NMC442",
     "an-chem": "graphite",
     "capacity": 20,  # Ah
-    "anode_overhang": ((193.5-2)*(126-4))/ ((188.5-2)*(122-4)), #= 1.061, # berechnet aus Warnecke2017
+    "anode_overhang": ((193.5-2)*(126-4))/ ((188.5-2)*(122-4)), #= 1.061, # calc. from Warnecke2017
     "factor_more_capacity_cathode": 1.16,  # nd
     "h": 7.2 * 10 ** -3, # Warnecke2017
-    "l": 217 * 10 ** -3,  # m LÄNGE
-    "b": 129 * 10 ** -3,  # m BREITE (2D hoehe)
+    "l": 217 * 10 ** -3,  # m length
+    "b": 129 * 10 ** -3,  # m width (2D height)
     "an-l":193.5-2, #  Warnecke2017 the -2 and -4 define a cutout at the corners with a total of 8mm²=2mm*4mm
     "an-b": 126-4,
     "cat-l":188.5-2,
     "cat-b": 122-4,
-    "case_to_stack_layer_factor": ((193.5-2)*(126-4)) / (217*129), # =0.83,  # berechnet aus Warnecke2017: surface case/ anode
+    "case_to_stack_layer_factor": ((193.5-2)*(126-4)) / (217*129), # =0.83,  # calc. from Warnecke2017: surface case/ anode
     "housing_thickness": housing_thickness,
     "porosity_Separator": 0.408, # Warnecke2017
     "density_PP_PE": 0.95,  # g/cm³
@@ -710,12 +697,12 @@ EIG_ePLB_C020={ # Warnecke2017
     "an_conductivecarbon": 0.05,
     "cat_porosity": 0.252, # Warnecke2017
     "an_porosity": 0.238, # Warnecke2017
-    "cu": 10 * 10 ** -6,  # Schichtdicken aus Warnecke2017
+    "cu": 10 * 10 ** -6,  # Layer thickness  aus Warnecke2017
     "an": 67 * 10 ** -6,
     "sep": 24.5 * 10 ** -6,
     "cat": 55 * 10 ** -6,
     "al": 20 * 10 ** -6,
-    "total_mass": 428 #g aus Datenblatt online http://www.ebaracus.com/sites/default/files/2012/12/EIG-ePLB-C020-Datasheet.pdf
+    "total_mass": 428 #g from datasheet online http://www.ebaracus.com/sites/default/files/2012/12/EIG-ePLB-C020-Datasheet.pdf
 }
 #####################################################################
 

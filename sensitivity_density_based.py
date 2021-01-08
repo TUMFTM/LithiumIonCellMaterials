@@ -16,12 +16,10 @@ from SALib.analyze import sobol, morris
 import numpy as np
 
 
-# Setup Tikz
-# plt.style.use("ggplot")
-# import tikzplotlib
-
 cell=BEV2
-cell = EIG_ePLB_C020
+
+# Choose other cells from cells, e.g.:
+# cell = EIG_ePLB_C020
 # cell = eGolf_UF261591
 
 an = cell["an"]

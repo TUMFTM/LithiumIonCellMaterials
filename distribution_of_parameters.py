@@ -2,6 +2,10 @@ from cells import *
 import matplotlib.pyplot as plt
 import pandas as pd
 
+'''
+Plotting file to show the distributions of parameters of the cells
+'''
+
 anode_overhang = [cell["anode_overhang"] for cell in all_cells]
 design = [cell["design"] if "design" in cell else None for cell in all_cells]
 type = [cell["type"] if "type" in cell else None for cell in all_cells]

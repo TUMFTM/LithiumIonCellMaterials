@@ -2,20 +2,20 @@
 
 
 ## Abstract
-How many resources are in a li-ion cell? Depending on geometry, capacity, chemistry etc. 
-this model estimates the amount of materials in g.
+How many resources are in a li-ion cell? Depending on the geometry, capacity, chemistry, etc. 
+this model estimates the number of materials in g.
 
 ## How to use
 1. You will need [python3](https://www.python.org/) and virtual environments on your machine.
 1. Create a virtual environment in this folder. `virtualenv env -p python3` and activate `source env\bin\activate`
 1. Install the requirements listed in requirements.txt: `pip install -r requirements.txt`
-1. According to cell type, open main_prismatic.py or main_cylindric.py. Choose from the built-in cells as indeicated in the file. Save file.
+1. According to cell type, open main_prismatic.py, or main_cylindric.py. Choose from the built-in cells as indicated in the file. Save file.
 1. Run `python main_prismatic.py` or `python main_cylindric.py`
 1. The script outputs material shares and weights for different methods. 
 
 ## Description of scripts
 cells.py\
-Contains the cell raw data from literature. A total of 17 cells, cylindric to prismatic are ready-to-use.
+Contains the cell raw data from the literature. A total of 17 cells, cylindric to prismatic are ready-to-use.
 
 main_prismatic.py / main_cylindric.py\
 Use these files to calculate the masses and shares for one specific cell.
@@ -37,7 +37,7 @@ Further uncertainties come from the factor_more_capacity_cathode factor. As ment
 
 ### Density-based method
 
-This method directly uses the densities of the active materials and the geometric properties i.e. the volume of the electrodes to calculate the mass of the active electrode parts. The model brings us to the aim of knowing the mass percentages of the active materials much quicker, as there is no need for adapting parameters. In fact, this model is in a way integrated also in the capacity-based method to allow for backtracking and correcting the factor_more_capacity_cathode.
+This method directly uses the densities of the active materials and the geometric properties i.e. the volume of the electrodes to calculate the mass of the active electrode parts. The model brings us to the aim of knowing the mass percentages of the active materials much quicker, as there is no need for adapting parameters. This model is in a way integrated also in the capacity-based method to allow for backtracking and correcting the factor_more_capacity_cathode.
 
 ## Article and Description of Datasets
 [Smart Mobility Blog - How many resources are in a lithium-ion cell](https://smarte-mobilitaet-blog.ftm.mw.tum.de/index.php/2020/04/02/how-many-resources-are-inside-of-a-lithium-ion-cell/)

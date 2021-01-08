@@ -1,27 +1,22 @@
-# Schichtenaufbau
+# Layers
 # Kupfer cu
 # Anode an
 # Separator sep
 # Cathode cat
 # Aluminium al
 
-# Davon brauchen wir die Schichtdicken aus Lain2019. Dann können wir wickeln, solange bis
-# die Gemoetrie der Zellenaussenhülle (Breite, Höhe, Dicke) erreicht ist. dAs gibt uns die Länge des Wickels
 
-# Rundzellen
-# Länge einer Spirale:
+# Cylindric cells
+# Length spiral:
 # https://www.giangrandi.org/soft/spiral/spiral.shtml
 
-# Prismatisch/Pouchzellen
-# Wie bestimmt man die Länge eines Wickels??
-# Vereinfachung über 2 halbkreise und Strecke dazwischen
+# prismatic / pouch
 
+# Wickel-volume: length * width * height 
 
-# Wickel-Volumen: Länge * Breite * Höhe 
+# choose chemistry --> get w./vol. percent
 
-# Zusammensetzung der Chemie wählen: Dann kommt man auf Gewichte/Volumenprozent.
-
-# APPROXIMIERTE FORMULA. We look for L (length of the tape)
+# APPROX. FORMULA. We look for L (length of the tape)
 # geht the length(N,h,D0)
 # L = pi*N*(D0 + h*(N-1))
 #
