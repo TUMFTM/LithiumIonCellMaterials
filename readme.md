@@ -21,7 +21,7 @@ main_prismatic.py / main_cylindric.py\
 Use these files to calculate the masses and shares for one specific cell.
 
 main_plotter.py\
-plots several cells next to each other. contains some sensitivity measures
+plots several cells next to each other. Contains some sensitivity measures.
 
 sensitivity_density_based.py\
 Contains the sensitivity analysis for the density-based approach
@@ -31,7 +31,7 @@ Contains the sensitivity analysis for the density-based approach
 
 ### Capacity-based method
 
-The capacity-based method makes use of the specific capacity in Ah/g of the active materials and the rated capacity of the cell in Ah to calculate the mass of the active materials. The specific capacities for active materials can be found in the literature. Unfortunately, one always runs into uncertainties, since the specific capacities are given with a certain bandwidth. Neicoorperation, for example, gives the value of ≥ 190 mAh/g in their datasheet for NCA electrodes [8]. Other sources from scientific papers either give ranges scraped from the literature or exact numbers for one exemplarily reverse-engineered cell as [Lain2019].
+The capacity-based method makes use of the specific capacity in Ah/g of the active materials and the rated capacity of the cell in Ah to calculate the mass of the active materials. The specific capacities for active materials can be found in the literature. Unfortunately, one always runs into uncertainties, since the specific capacities are given with a certain bandwidth. Neicoorperation, for example, gives the value of ≥ 190 mAh/g in their datasheet for NCA electrodes [2]. Other sources from scientific papers either give ranges scraped from the literature or exact numbers for one exemplarily reverse-engineered cell as [1].
 
 Further uncertainties come from the factor_more_capacity_cathode factor. As mentioned above, this captures the nature of built-in cathode capacities are always larger than the cell’s rated capacity. To smooth out this factor, one can look at the densities of the electrode w/o porosity and compare this value with the ones from the literature. Necessary here ist the tape formula, thus the ratio between active material, binder, and CC. Backtracking through the model, we can calculate a value for the factor, which allows for an exact match between the model-estimated densities and the ones from literature.
 
@@ -43,6 +43,13 @@ This method directly uses the densities of the active materials and the geometri
 [Smart Mobility Blog - How many resources are in a lithium-ion cell](https://smarte-mobilitaet-blog.ftm.mw.tum.de/index.php/2020/04/02/how-many-resources-are-inside-of-a-lithium-ion-cell/)
 
 [Same Article on Researchgate](https://www.researchgate.net/publication/340870640_Resources_in_a_lithium-ion_cell)
+
+
+#### Sources
+[1] doi.org/10.3390/batteries5040064
+
+[2] https://www.neicorporation.com/products/batteries/cathode-anode-tapes/lithium-nickel-cobalt-aluminum-oxide/
+
+
 #### Contact
-lukas.merkle@tum.de\
-[FTM Website](https://www.mw.tum.de/ftm/lehrstuhl/mitarbeiter/smarte-mobilitaet/lukas-merkle-m-sc/)
+lukas.merkle@tum.de
