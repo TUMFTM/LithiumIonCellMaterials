@@ -21,7 +21,7 @@ main_prismatic.py / main_cylindric.py\
 Use these files to calculate the masses and shares for one specific cell.
 
 main_plotter.py\
-plots several cells next to each other. contains some sensitivity measures
+plots several cells next to each other. Contains some sensitivity measures.
 
 sensitivity_density_based.py\
 Contains the sensitivity analysis for the density-based approach
@@ -52,5 +52,4 @@ This method directly uses the densities of the active materials and the geometri
 
 
 #### Contact
-lukas.merkle@tum.de\
-[FTM Website](https://www.mw.tum.de/ftm/lehrstuhl/mitarbeiter/smarte-mobilitaet/lukas-merkle-m-sc/)
+lukas.merkle@tum.de
