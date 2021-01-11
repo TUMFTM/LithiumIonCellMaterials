@@ -16,16 +16,20 @@ Quickstart under linux:
 1. The script outputs material shares and weights for different methods. 
 
 ## Description of Scripts
-cells.py\
+**cells.py**
+
 Contains the cell raw data from the literature. A total of 17 cells, cylindric to prismatic are ready-to-use.
 
-main_prismatic.py / main_cylindric.py\
+**main_prismatic.py / main_cylindric.py**
+
 Use these files to calculate the masses and shares for one specific cell.
 
-main_plotter.py\
+**main_plotter.py**
+
 plots several cells next to each other. Contains some sensitivity measures.
 
-sensitivity_density_based.py\
+**sensitivity_density_based.py**
+
 Contains the sensitivity analysis for the density-based approach
 
 ## Methods
