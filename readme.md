@@ -54,7 +54,7 @@ This method directly uses the densities of the active materials and the geometri
 
 ### Cite
 Find & cite [this repo](https://www.researchgate.net/publication/348431757_Estimate_Resources_in_Li-Ionen_Cells) using the doi issued by researchgate.\
-doi.org/10.13140/RG.2.2.10763.31528
+[doi.org/10.13140/RG.2.2.10763.31528](doi.org/10.13140/RG.2.2.10763.31528)
 
 #### Contact
 lukas.merkle@tum.de
