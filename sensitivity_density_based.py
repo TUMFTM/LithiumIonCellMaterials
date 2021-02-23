@@ -14,9 +14,25 @@ import time
 from SALib.sample import saltelli
 from SALib.analyze import sobol, morris
 import numpy as np
-
-
-cell=BEV2
+from plt_multilang.plt_multilang import MultiLang
+import locale
+ml = MultiLang(language="de")
+locale.setlocale(locale.LC_ALL, "de_DE.utf8")
+import matplotlib
+USEPGF=1
+if USEPGF==1:
+    matplotlib.use("pgf")
+    matplotlib.rcParams.update({
+        "pgf.texsystem": "pdflatex",
+        'font.family': 'serif',
+        'text.usetex': True,
+        'pgf.rcfonts': False,
+        'axes.formatter.use_locale' : True,
+        "pgf.preamble": [
+             "\\usepackage{siunitx}",          # load additional packages
+             ]
+    })
+cell = BEV2
 
 # Choose other cells from cells, e.g.:
 # cell = EIG_ePLB_C020
@@ -333,6 +349,12 @@ if __name__ == "__main__":
 
     ######################## USING SALib ##############################################
     evaluate = "mass_an_material"
+    evaluate = "mass_cat_material"
+
+    eval_map_to_print_nice_name={
+        "mass_an_material": ml.text(en="anode mass", de="Anodenmasse"),
+        "mass_cat_material": ml.text(en="cathode mass", de="Kathodenmasse")
+    }
 
     def evaluate_model(cell, X):
         cell["anode_overhang"] = X[0]
@@ -349,7 +371,16 @@ if __name__ == "__main__":
 
     problem = {
         'num_vars': 8,
-        'names': ['anode_overhang', 'case_to_stack_layer_factor',"ease_packaging_factor", 'an', "cat", "sep", "an_porosity", "cat_porosity"],
+        'names': [
+            ml.text(en='anode_overhang', de="Anodenüberhang"),
+            ml.text(en='case_to_stack_layer_factor', de="Stackfaktor"),
+            ml.text(en='ease_packaging_factor', de="Packagefaktor"),
+            ml.text(en='Anode thickness', de="Anodendicke"),
+            ml.text(en='Cathode thickness', de="Kathodendicke"),
+            ml.text(en='Separator thickness', de="Separatorstärke"),
+            ml.text(en='anode porosity', de="Anodenporosität"),
+            ml.text(en='cathode porosity', de="Kathodenporosität")
+        ],
         'bounds': [
             [cell_max["anode_overhang"], cell_min["anode_overhang"]],
             [cell_min["case_to_stack_layer_factor"], cell_max["case_to_stack_layer_factor"]],
@@ -378,17 +409,131 @@ if __name__ == "__main__":
 
     Si = sobol.analyze(problem, Y, print_to_console=True)
 
-    f, axs = plt.subplots(nrows=1, ncols=1, figsize=(13,7))
-    axs.plot(problem["names"], Si["S1"], marker="+", markersize=14, linestyle="", label="1. order")
-    axs.plot(problem["names"], Si["ST"], marker="+", markersize=14, linestyle="", label="Total order")
-    axs.set_xlabel("Sobol sensitivivty method", fontsize=14)
-    axs.set_ylabel("share model variance", fontsize=14)
-    axs.tick_params(axis='x', labelsize=14, labelrotation=10)
-    axs.tick_params(axis='y', labelsize=14)
+    # f, axs = plt.subplots(nrows=1, ncols=1, figsize=(13,7))   # figsize for web
+    f, axs = plt.subplots(nrows=1, ncols=1, figsize=(6.3, 2))   # figsize for print
+    fontsize=11
+    axs.plot(problem["names"], Si["S1"], marker="+", markersize=14, linestyle="", label=ml.text(en="1. order", de="1. Ordnung"))
+    axs.plot(problem["names"], Si["ST"], marker="X", markersize=7, linestyle="", label=ml.text(en="Total order", de="Totale Ordnung"))
+    # axs.set_xlabel("Sobol sensitivivty method", fontsize=fontsize)
+    axs.set_ylabel(ml.text(en="share model variance", de="Anteil Modellvarianz"), fontsize=fontsize)
+    axs.tick_params(axis='x', labelsize=fontsize, labelrotation=20)
+    axs.tick_params(axis='y', labelsize=fontsize)
     axs.set_ylim([0, 0.7])
-    axs.set_title("Model output: "+ evaluate, fontsize=14)
-    axs.legend(prop={'size': 14})
-    plt.savefig("plots/sensitivity_density_based/sobol_s1_st_{}.png".format(evaluate))
+    axs.set_title(ml.text(en=f'Influence on {evaluate}', de=f"Einfluss auf die {eval_map_to_print_nice_name[evaluate]}"), fontsize=fontsize)
+    axs.legend(prop={'size': fontsize})
+    plt.savefig("plots/sensitivity_density_based/sobol_s1_st_{}.png".format(evaluate), bbox_inches="tight")
+    plt.savefig("plots/sensitivity_density_based/sobol_s1_st_{}.pgf".format(evaluate), bbox_inches="tight")
+
+    # print(cell_min["an"], cell_max["an"])
+    plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ######################## Dual Sobols plot ###############################################################
+    evaluate_list = ["mass_an_material",  "mass_cat_material"]
+
+    f, axs = plt.subplots(nrows=2, ncols=1, figsize=(6.3, 3))  # figsize for print
+    f.subplots_adjust(hspace=0.2)
+
+    for i_plt, evaluate in enumerate(evaluate_list):
+
+        eval_map_to_print_nice_name = {
+            "mass_an_material": ml.text(en="anode mass", de="Anodenmasse"),
+            "mass_cat_material": ml.text(en="cathode mass", de="Kathodenmasse")
+        }
+
+
+        def evaluate_model(cell, X):
+            cell["anode_overhang"] = X[0]
+            cell["case_to_stack_layer_factor"] = X[1]
+            cell["ease_packaging_factor"] = X[2]
+            cell["an"] = X[3]
+            cell["cat"] = X[4]
+            cell["sep"] = X[5]
+            cell["an_porosity"] = X[6]
+            cell["cat_porosity"] = X[7]
+
+            return calculate_cell(cell)["masses_density"][evaluate]
+
+
+        problem = {
+            'num_vars': 8,
+            'names': [
+                ml.text(en='anode_overhang', de="Anodenüberhang"),
+                ml.text(en='case_to_stack_layer_factor', de="Stackfaktor"),
+                ml.text(en='ease_packaging_factor', de="Packagefaktor"),
+                ml.text(en='Anode thickness', de="Anodendicke"),
+                ml.text(en='Cathode thickness', de="Kathodendicke"),
+                ml.text(en='Separator thickness', de="Separatorstärke"),
+                ml.text(en='anode porosity', de="Anodenporosität"),
+                ml.text(en='cathode porosity', de="Kathodenporosität")
+            ],
+            'bounds': [
+                [cell_max["anode_overhang"], cell_min["anode_overhang"]],
+                [cell_min["case_to_stack_layer_factor"], cell_max["case_to_stack_layer_factor"]],
+                [cell_max["ease_packaging_factor"], cell_min["ease_packaging_factor"]],
+                [cell_min["an"], cell_max["an"]],
+                [cell_min["cat"], cell_max["cat"]],
+                [cell_max["sep"], cell_min["sep"]],
+                [0.09, 0.296],
+                [0.2, 0.38]]
+        }
+
+        # # https://stackoverflow.com/questions/45280278/could-salib-support-other-probability-distribution-when-inputing-parameters-in-s/51763834
+        param_values = saltelli.sample(problem, 1000)
+        # param_values[:, 0] = sp.stats.norm.ppf(param_values[:, 0], 0, np.pi / 2.)
+        # param_values[:, 1] = sp.stats.norm.ppf(param_values[:, 1], 0, np.pi / 2.)
+        # param_values[:, 2] = sp.stats.norm.ppf(param_values[:, 2], 0, np.pi / 2.)
+        # param_values[:, 3] = sp.stats.norm.ppf(param_values[:, 2], 0, np.pi / 2.)
+        # param_values[:, 4] = sp.stats.norm.ppf(param_values[:, 2], 0, np.pi / 2.)
+        # param_values[:, 5] = sp.stats.norm.ppf(param_values[:, 2], 0, np.pi / 2.)
+        # param_values[:, 6] = sp.stats.norm.ppf(param_values[:, 2], 0, np.pi / 2.)
+        # param_values[:, 7] = sp.stats.norm.ppf(param_values[:, 2], 0, np.pi / 2.)
+
+        Y = np.zeros([param_values.shape[0]])
+        for i, X in enumerate(param_values):
+            Y[i] = evaluate_model(cell, X)
+
+        Si = sobol.analyze(problem, Y, print_to_console=True)
+
+
+
+        fontsize = 11
+        axs[i_plt].plot(problem["names"], Si["S1"]*100, marker="+", markersize=14, linestyle="",
+                 label=ml.text(en="1. order", de="1. Ordnung"))
+        axs[i_plt].plot(problem["names"], Si["ST"]*100, marker="x", markersize=8, linestyle="",
+                 label=ml.text(en="Total order", de="Totale Ordnung"))
+
+        axs[i_plt].set_ylabel(ml.text(en="share model variance", de="Anteil Modellvarianz in %"), fontsize=fontsize, loc="top")
+        axs[i_plt].yaxis.set_label_coords(-0.1, 1.7)
+        if i_plt == 0:
+            axs[i_plt].set_ylabel("")
+
+        axs[i_plt].tick_params(axis='x', labelsize=fontsize, labelrotation=20)
+        axs[i_plt].tick_params(axis='y', labelsize=fontsize)
+        axs[i_plt].set_ylim([0, 0.7])
+        axs[i_plt].set_ylim([0, 70])
+        axs[i_plt].set_title(
+            ml.text(en=f'Influence on {evaluate}', de=f"Einfluss auf die {eval_map_to_print_nice_name[evaluate]}"),
+            fontsize=fontsize)
+        axs[i_plt].legend(prop={'size': fontsize})
+
+        if i_plt == 0:
+            axs[i_plt].get_xaxis().set_visible(False)
+
+    plt.savefig("plots/sensitivity_density_based/sobol_s1_st_combined_{}.png".format(evaluate), bbox_inches="tight")
+    plt.savefig("plots/sensitivity_density_based/sobol_s1_st_combined_{}.pgf".format(evaluate), bbox_inches="tight")
 
     # print(cell_min["an"], cell_max["an"])
     plt.show()
